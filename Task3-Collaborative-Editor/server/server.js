@@ -1,7 +1,12 @@
+require("dotenv").config();
+
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const mongoose = require("mongoose");
+
+const Document = require("./models/Document");
 
 const app = express();
 
@@ -15,15 +20,48 @@ const io = new Server(server, {
     }
 });
 
-let documentContent = "";
+mongoose.connect(process.env.MONGODB_URI)
+.then(() => {
+    console.log("MongoDB Connected");
+})
+.catch((err) => {
+    console.log(err);
+});
 
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
 
-    socket.emit("load-document", documentContent);
+    console.log("User Connected");
 
-    socket.on("send-changes", (data) => {
+    let doc = await Document.findOne();
 
-        documentContent = data;
+    if (!doc) {
+
+        doc = await Document.create({
+            content: ""
+        });
+    }
+
+    socket.emit(
+        "load-document",
+        doc.content
+    );
+
+    socket.on("send-changes", async (data) => {
+
+        let document = await Document.findOne();
+
+        if (!document) {
+
+            document = await Document.create({
+                content: data
+            });
+
+        } else {
+
+            document.content = data;
+
+            await document.save();
+        }
 
         socket.broadcast.emit(
             "receive-changes",
@@ -31,8 +69,14 @@ io.on("connection", (socket) => {
         );
     });
 
+    socket.on("disconnect", () => {
+        console.log("User Disconnected");
+    });
+
 });
 
-server.listen(3000, () => {
-    console.log("Server running on port 3000");
+server.listen(process.env.PORT, () => {
+    console.log(
+        `Server running on port ${process.env.PORT}`
+    );
 });

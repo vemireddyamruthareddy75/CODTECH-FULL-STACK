@@ -1,50 +1,27 @@
 # CODTECH Full Stack Internship
 
-This repository contains all tasks completed as part of the CODTECH Full Stack Development Internship.
+## Completed Tasks
 
-## Task 1 - Weather App
+### Task 1 - Weather App
+Real-time weather application using HTML, CSS, JavaScript and Weather API.
 
-A responsive weather application that fetches real-time weather data from a public API.
+### Task 2 - Real-Time Chat Application
+Live chat application built using Node.js, Express.js and Socket.IO.
 
-### Technologies
+### Task 3 - Collaborative Document Editor
+Real-time collaborative editor using React.js, Node.js, Socket.IO and MongoDB Atlas.
+
+### Task 4 - Chrome Extension
+Productivity tracking extension that monitors website usage and generates analytics.
+
+## Technologies Used
+
 - HTML
 - CSS
 - JavaScript
-
----
-
-## Task 2 - Real-Time Chat Application
-
-A live chat application using Socket.IO and Node.js.
-
-### Technologies
+- React.js
 - Node.js
 - Express.js
 - Socket.IO
-
----
-
-## Task 3 - Collaborative Document Editor
-
-A real-time collaborative notes editor built with React and Socket.IO.
-
-### Technologies
-- React.js
-- Node.js
-- Socket.IO
-
----
-
-## Task 4 - Chrome Extension
-
-A productivity tracker that monitors website usage and displays analytics.
-
-### Technologies
-- JavaScript
+- MongoDB Atlas
 - Chrome Extension API
-
----
-
-## Author
-
-Amrutha Reddy

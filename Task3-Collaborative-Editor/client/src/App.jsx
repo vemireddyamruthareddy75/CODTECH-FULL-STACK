@@ -1,7 +1,8 @@
- import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import "./App.css";
 
-const socket = io("http://localhost:3000");
+const socket = io("http://localhost:5000");
 
 function App() {
 
@@ -29,20 +30,19 @@ function App() {
     );
   };
 
-  return (
-    <div style={{padding:"20px"}}>
+ return (
+  <div className="container">
 
-      <h1>Collaborative Notes Editor</h1>
+    <h1>Collaborative Notes Editor</h1>
 
-      <textarea
-        rows="20"
-        cols="80"
-        value={text}
-        onChange={handleChange}
-      />
+    <textarea
+      value={text}
+      onChange={handleChange}
+      placeholder="Start writing..."
+    />
 
-    </div>
-  );
+  </div>
+);
 }
 
 export default App;
