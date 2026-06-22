@@ -21,15 +21,21 @@ A real-time chat application built using Socket.IO and Node.js that allows multi
 
 1. Install dependencies
 
+```bash
 npm install
+```
 
-2. Start server
+2. Start the server
 
+```bash
 node server.js
+```
 
-3. Open browser
+3. Open the app in your browser
 
+```text
 http://localhost:3000
+```
 
 ## Author
 Amrutha Reddy
